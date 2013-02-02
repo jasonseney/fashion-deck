@@ -1,0 +1,130 @@
+// Clearfix
+.clear { clear: both; }
+.clearfix:after {
+    clear: both;
+    content: ".";
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+.clearfix {
+    display: inline-block;
+}
+* html .clearfix {
+    height: 1%;
+}
+.clearfix {
+    display: block;
+}
+
+@mixin translucent($amount) {
+    opacity: $amount;
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=$amount * 100)"; // first!
+    filter: alpha(opacity=$amount * 100);					// second!
+}
+@mixin vertical_center($height, $offset:0, $top_buffer: 0) {
+    position: absolute; 
+    top: 50%; 
+    height: $height; 
+    margin-top:-$height/2 - $offset; /* negative half of the height */
+    @media screen and (max-height: $height + $offset + $top_buffer) {
+        @include no_vertical($height);
+    }
+}
+// Removes vertical centering (for shorter screens)
+// Note: Add padding-top to the containing element to prevent elements running flush
+@mixin no_vertical($height: auto) {
+    position: relative;
+    top: auto;
+    height: $height;
+    margin-top: auto;
+}
+@mixin horizontal_center($width) {
+    @media screen and (min-width: $width) {
+        position:absolute; 
+        margin-left: 50%; 
+        left: -$width/2;
+        width: $width;
+    }
+}
+@mixin horizontal_list($padding) {
+	display: inline-block; 
+    float: left;
+	padding-left: $padding;
+	padding-right: $padding;
+}
+@mixin shadow($color: #333333) {
+  -moz-box-shadow: 0px 1px 2px $color;
+  -webkit-box-shadow: 0px 1px 2px $color;
+  box-shadow: 0px 1px 2px $color;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=90, Color='$color')";
+  filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=90, Color='$color');
+}
+
+// Example: box-emboss(0.8, 0.05);
+@mixin box_emboss($opacity, $opacity2){
+    box-shadow: rgba(white,$opacity) 0 1px 0, inset rgba(black,$opacity2) 0 1px 0;
+}
+
+// Adds borders top and bottom with emboss shadow effect
+// Example: imprint(rgba(black,1.0), rgba(#999, 0.2));
+@mixin imprint($border_color, $shadow_color) {
+    border-top: 1px solid $border_color;
+    border-bottom: 1px solid $border_color;
+    box-shadow: inset $shadow_color 0 1px 0, $shadow_color 0 1px 0;
+}
+
+@mixin letterpress($opacity){
+    text-shadow: rgba(white,$opacity) 0 1px 0;
+}
+@mixin image_replace() {
+    background-color: transparent;
+    border: 0;
+    overflow: hidden;
+    /* IE 6/7 fallback */
+    *text-indent: -9999px;
+
+    &:before {
+        content: "";
+        display: block;
+        width: 0;
+        height: 100%;
+    }
+}
+@mixin image_replace_background($image_url, $width, $height) {
+    @include image_replace;
+    display:inline-block;
+    width: $width;
+    height: $height;
+    background: url($image_url) no-repeat;
+}
+@mixin gradient_page($start_color, $end_color) {
+
+    $stop_color: lighten($start_color, 5%);
+
+    /* IE10 Consumer Preview */ 
+    background-image: -ms-radial-gradient(center top, ellipse farthest-side, $start_color 0%, $stop_color 10%, $end_color 100%);
+
+    /* Mozilla Firefox */ 
+    background-image: -moz-radial-gradient(center top, ellipse farthest-side, $start_color 0%, $stop_color 10%, $end_color 100%);
+
+    /* Opera */ 
+    background-image: -o-radial-gradient(center top, ellipse farthest-side, $start_color 0%, $stop_color 20%, $end_color 100%);
+
+    /* Webkit (Safari/Chrome 10) */ 
+    background-image: -webkit-gradient(radial, center top, 0, center top, 477, color-stop(0, $start_color), color-stop(0.4, $stop_color), color-stop(1, $end_color));
+
+    /* Webkit (Chrome 11+) */ 
+    background-image: -webkit-radial-gradient(center top, ellipse farthest-side, $start_color 0%, $stop_color 20%, $end_color 100%);
+
+    /* W3C Markup, IE10 Release Preview */ 
+    background-image: radial-gradient(ellipse farthest-side at center top, $start_color 0%, $stop_color 20%, $end_color 100%);
+}
+
+// *** Functions ***
+
+@function scale_leading($base) {
+    @return $base * 1.35
+}
+
+

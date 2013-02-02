@@ -1,4 +1,3 @@
-fashion-pitch
+Fashion Pitch
 =============
 
-Media pitch platform for presenting a fashion designers' brand
