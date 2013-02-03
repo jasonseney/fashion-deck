@@ -25,6 +25,7 @@ html, body {
   color: #fff; }
 
 body {
+  font-family: "Raleway", sans-serif;
   font-size: 16px;
   line-height: 24.3px; }
 
@@ -33,7 +34,29 @@ a {
   text-decoration: none; }
 
 header {
-  height: 100px; }
+  height: 100px;
+  text-align: center;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #000;
+  z-index: 100; }
+  header h1 {
+    font-size: 48px;
+    padding-top: 40px; }
+
+#slot {
+  height: 140px;
+  width: 100%; }
+
+#photos {
+  height: 500px;
+  width: 200%;
+  overflow: hidden; }
+  #photos .photo {
+    float: left; }
+    #photos .photo img {
+      max-height: 500px; }
 
 .product {
   float: left;

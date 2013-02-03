@@ -1,5 +1,7 @@
 @import "helpers";
 
+$photo_padding: 20px;
+
 html, body { 
     height: 100%;
     width: 100%;
@@ -8,6 +10,7 @@ html, body {
     color: #fff;
 }
 body {
+    font-family: 'Raleway', sans-serif;
     font-size: 16px;
     line-height: scale_leading(18px); 
 }
@@ -18,6 +21,31 @@ a {
 
 header {
     height: 100px;
+    text-align: center;
+    h1 {
+        font-size: 48px;
+        padding-top: 40px;
+    }
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #000;
+    z-index: 100;
+}
+#slot {
+    height: 140px;
+    width: 100%;
+}
+#photos {
+    height: 500px;
+    width: 200%;
+    overflow: hidden;
+    .photo {
+        float: left;
+        img {
+            max-height: 500px;
+        }
+    }
 }
 
 .product {

@@ -8,25 +8,31 @@
     <a class="create-link" href="/">+ Create New Deck</a>
 
 <header>
-    <h1 class='center'><%= @data['title'] %></h1>
+    <h1><%= @data['title'] %></h1>
 </header>
+
+<div id="slot"></div>
 
 <div id="photos">
 <% if @data['tumblr_blog'] != "" %>
 
-    <% @tumblr_posts['response']['posts'][0..3].each do |post| %>
+    <% @tumblr_posts['response']['posts'][0..2].each do |post| %>
         <% if post["photos"] %>
-            <img style="max-height: 300px" src="<%= post["photos"].first["alt_sizes"].first["url"] %>" alt="<%= post["id"] %>" />
+            <div class="photo">
+                <img src="<%= post["photos"].first["alt_sizes"].first["url"] %>" alt="<%= post["id"] %>" />
+            </div>
         <% end %>
     <% end %>
 
 <% end %>
 </div>
 
+<div class="clear"></div>
+
 <div id="products">
     <% if @data['etsy_shop_id'] != "" %>
 
-        <% @etsy_products['results'][0..6].each do |product| %>
+        <% @etsy_products['results'][0..2].each do |product| %>
             <div class="product">
                 <img src="<%= product["MainImage"]["url_570xN"] %>" width="570" />
                 <h4><%= product["title"] %></h4>
@@ -36,11 +42,12 @@
     <% end %>
 <div>
 
+<div class="clear"></div>
+
 <div id="videos">
     <% if @data['vimeo_username'] != "" %>
 
-        <h2>Vimeo</h2>
-        <% @vimeo_videos[0..3].each do |video| %>
+        <% @vimeo_videos[0..2].each do |video| %>
             <div>
             <iframe src="http://player.vimeo.com/video/<%= video["id"] %>" width="1280" height="720" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
             </div>
