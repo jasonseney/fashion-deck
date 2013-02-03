@@ -1,7 +1,24 @@
+<% if defined? debug_response %>
+    <%= debug_response.to_json %>
+<% end %>
+
 <h1>Fashion Deck</h1>
 
 <form action="/" method="post">
     <label>Title</label>
     <input type="text" name="title" />
+
+    <br />
+    <label>Tumblr Blog</label>
+    <input type="text" name="tumblr_blog" />
+
+    <br />
+    <label>Instagram Name</label>
+    <input type="text" name="instagram_name" />
+
+    <br />
+    <label>Etsy Shop Id</label>
+    <input type="text" name="etsy_shop_id" />
+
     <button type="submit">Create New Page</button>
 </form>

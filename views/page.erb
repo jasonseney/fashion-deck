@@ -4,4 +4,19 @@
 <br />
 <br />
 <br />
-<h4><%= @data %></h4>
+<h1><%= @data['title'] %></h1>
+
+<% if @data['tumblr_blog'] != "" %>
+
+    <h2>Tumblr</h2>
+
+    <% @tumblr_posts['response']['posts'][0..3].each do |post| %>
+        <% if post["photos"] %>
+            <img style="max-height: 300px" src="<%= post["photos"].first["alt_sizes"].first["url"] %>" alt="<%= post["id"] %>" />
+        <% end %>
+    <% end %>
+
+    <h2>Instagram</h2>
+
+<% end %>
+

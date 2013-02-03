@@ -5,3 +5,7 @@ gem 'sinatra'
 
 gem 'sass'
 gem 'couchrest'
+gem 'instagram'
+gem 'tumblr_client'
+gem 'rest-client'
+gem 'json'
