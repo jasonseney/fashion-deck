@@ -5,38 +5,49 @@
 
 <div class="deck">
 
-    <a class="create-link" href="/">+ Create New Deck</a>
 
-<header>
+    <header class="">
+
     <h1><%= @data['title'] %></h1>
+
+    <a class="create-link" href="/">+ FD</a>
+
+    <% if @data['spotify_playlist'] != "" %>
+        <div id="music">
+                <iframe src="https://embed.spotify.com/?uri=<%= @data['spotify_playlist']%>" width="280" height="80" frameborder="0" allowtransparency="true"></iframe>
+        </div>
+    <% end %>
+
 </header>
 
 <div id="slot"></div>
 
-<div id="photos">
 <% if @data['tumblr_blog'] != "" %>
+    <div id="photos">
+        <div class="slider">
 
-    <% @tumblr_posts['response']['posts'][0..2].each do |post| %>
-        <% if post["photos"] %>
-            <div class="photo">
-                <img src="<%= post["photos"].first["alt_sizes"].first["url"] %>" alt="<%= post["id"] %>" />
-            </div>
+        <% @tumblr_posts['response']['posts'][0..6].each do |post| %>
+            <% if post["photos"] %>
+                <div class="photo">
+                    <img src="<%= post["photos"].first["alt_sizes"].first["url"] %>" alt="<%= post["id"] %>" />
+                </div>
+            <% end %>
         <% end %>
-    <% end %>
 
+        </div>
+    </div>
 <% end %>
-</div>
 
 <div class="clear"></div>
 
 <div id="products">
     <% if @data['etsy_shop_id'] != "" %>
 
-        <% @etsy_products['results'][0..2].each do |product| %>
-            <div class="product">
+        <% @etsy_products['results'][0..3].each do |product| %>
+            <a href="<%= product["url"]%>" target="_blank" class="product">
                 <img src="<%= product["MainImage"]["url_570xN"] %>" width="570" />
                 <h4><%= product["title"] %></h4>
-            </div>
+            </a>
         <% end %>
 
     <% end %>
@@ -55,10 +66,5 @@
     <% end %>
 </div>
 
-<div id="music">
-    <% if @data['spotify_playlist'] != "" %>
-        <iframe src="https://embed.spotify.com/?uri=<%= @data['spotify_playlist']%>&view=coverart" width="640" height="1000" frameborder="0" allowtransparency="true"></iframe>
-    <% end %>
-</div>
 
 </div>
