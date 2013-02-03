@@ -98,6 +98,7 @@ header {
     background-color: #000;
     margin-bottom: 20px;
     margin-right: 20px;
+    margin-left: 20px;
     overflow: hidden;
     h4 {
         position: absolute;
@@ -134,9 +135,9 @@ header {
     top: 10px;
 }
 
-#products {
+.products {
     width: 100%;
-    max-width: 1200px;
+    max-width: 1220px;
     margin: 20px auto;
 }
 .video {

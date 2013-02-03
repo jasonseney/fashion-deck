@@ -17,7 +17,7 @@
 
     <% if @data['spotify_playlist'] != "" %>
         <div id="music">
-                <iframe src="https://embed.spotify.com/?uri=<%= @data['spotify_playlist']%>" width="280" height="80" frameborder="0" allowtransparency="true"></iframe>
+                <iframe src="https://embed.spotify.com/?uri=<%= @data['spotify_playlist']%>" width="360" height="80" frameborder="0" allowtransparency="true"></iframe>
         </div>
     <% end %>
 
@@ -51,18 +51,18 @@
 
 <div class="clear"></div>
 
-<div id="products" class="clearfix">
     <% if @data['etsy_shop_id'] != "" %>
+        <div class="products clearfix">
 
-        <% @etsy_products['results'][0..3].each do |product| %>
+        <% @etsy_products['results'][0..1].each do |product| %>
             <a href="<%= product["url"]%>" target="_blank" class="product">
                 <img src="<%= product["MainImage"]["url_570xN"] %>" width="570" />
                 <h4><%= product["title"] %></h4>
             </a>
         <% end %>
 
+        <div>
     <% end %>
-<div>
 
 <div class="clear"></div>
 
@@ -72,6 +72,18 @@
     </div>
 <% end %>
 
+<div class="clear"></div>
+
+    <% if @data['etsy_shop_id'] != "" and @etsy_products['results'][3] %>
+        <div class="products clearfix">
+        <% @etsy_products['results'][2..3].each do |product| %>
+            <a href="<%= product["url"]%>" target="_blank" class="product">
+                <img src="<%= product["MainImage"]["url_570xN"] %>" width="570" />
+                <h4><%= product["title"] %></h4>
+            </a>
+        <% end %>
+        </div>
+    <% end %>
 
 </div>
 
