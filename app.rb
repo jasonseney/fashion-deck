@@ -60,18 +60,19 @@ get '/page/:key' do
 
   # *** ETSY ***
   if @data["etsy_shop_id"] != ""
-    etsy_request = "http://sandbox.openapi.etsy.com/v2/shops/" + @data["etsy_shop_id"] + ".json"
+    etsy_request = "http://openapi.etsy.com/v2/shops/" + @data["etsy_shop_id"] + "/listings/active.json"
 
-    #etsy_response = RestClient.get etsy_request, {:params => { :api_key => @etsy_key }, :accept => :json}
     begin
-    etsy_response = RestClient.get "http://sandbox.openapi.etsy.com/v2/shops/Gifteryme.json?api_key=4m8b59u9y7fzyyxqtpbmnw39", {:timeout => 99999}
+      etsy_response = RestClient.get etsy_request, {:params => { :api_key => @etsy_key, :includes => "MainImage" }, :accept => :json}
     rescue Error => e
       puts e
     end
     
-    @etsy_shop = JSON.parse etsy_response
+    puts etsy_response
+    @etsy_products = JSON.parse etsy_response
       
   end
+
   if @data["spotify_playlist"] != ""
 
   end

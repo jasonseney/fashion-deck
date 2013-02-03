@@ -2,27 +2,94 @@
     <%= debug_response.to_json %>
 <% end %>
 
-<h1>Fashion Deck</h1>
+<link rel="stylesheet" type="text/css" href="/stylesheets/foundation.min.css" />
+<link rel="stylesheet" type="text/css" href="/stylesheets/index.css" />
 
-<form action="/" method="post">
-    <label>Title</label>
-    <input type="text" name="title" />
+<div class="intro">
+<div class="row init">
+    <div class="twelve columns">
+      <h1>Fashion Deck</h1>
+    </div>
+</div>
 
-    <br />
-    <label>Tumblr Blog</label>
-    <input type="text" name="tumblr_blog" />
+<div class="row">
+    <div class="twelve columns">
+        <h4>Create and share your fashion brand experience</h4>
+    </div>
+<div>
 
-    <br />
-    <label>Vimeo Username</label>
-    <input type="text" name="vimeo_username" />
+<div class=" nine columns centered">
+  <form action="/" method="post">
 
-    <br />
-    <label>Spotify Playlist</label>
-    <input type="text" name="spotify_playlist" />
+  <div class="row">
+    <div class="four mobile-one columns">
+      <label class="right inline"></label>
+    </div>
+    <div class="eight mobile-three columns">
+      <input type="text" placeholder="Name Your Deck" class="eight" />
+    </div>
+  </div>
 
-    <br />
-    <label>Etsy Shop Id</label>
-    <input type="text" name="etsy_shop_id" />
+ <fieldset>
+        <legend>Grab your social media</legend>
 
-    <button type="submit">Create New Page</button>
-</form>
+
+  <div class="row">
+    <div class="four mobile-one columns">
+      <label class="right inline"><i class="ss-icon">&#xF620;
+</i></label>
+    </div>
+    <div class="eight mobile-three columns">
+      <input type="text" class="eight" name="tumblr_blog" placeholder="fashionsite.tumblr.com" />
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="four mobile-one columns">
+      <label class="right inline"><i class="ss-icon">&#xF631;
+</i></label>
+    </div>
+    <div class="eight mobile-three columns">
+      <input type="text" name="vimeo_username" class="eight" placeholder="Your vimeo username" />
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="four mobile-one columns">
+      <label class="right inline"><i class="ss-icon">&#xF6B1;
+</i></label>
+    </div>
+    <div class="eight mobile-three columns">
+      <input type="text" class="eight" name="spotify_playlist" placeholder="Spotify Playlist" />
+    </div>
+  </div>
+</fieldset>
+
+ <fieldset>
+        <legend>Commerce</legend>
+
+  <div class="row">
+    <div class="four mobile-one columns">
+        <label class="right inline"><i class="etsy">Etsy Logo Here ^^;</i></label>
+    </div>
+    <div class="eight mobile-three columns">
+      <input type="text" name="etsy_shop_id" class="eight" placeholder="Etsy Store Id" />
+    </div>
+  </div>
+</fieldset>
+
+<div class="row twelve columns">
+
+  <div class="three columns offset-by-seven">
+    <button type="submit" class="radius large button right">Build It!</button>
+  </div>
+</div>
+</div>
+
+</div>
+
+
+</div>
+</div>
+  
+</div>

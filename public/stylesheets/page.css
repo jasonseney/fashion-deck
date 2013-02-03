@@ -1,0 +1,72 @@
+.clear {
+  clear: both; }
+
+.clearfix:after {
+  clear: both;
+  content: ".";
+  display: block;
+  height: 0;
+  visibility: hidden; }
+
+.clearfix {
+  display: inline-block; }
+
+* html .clearfix {
+  height: 1%; }
+
+.clearfix {
+  display: block; }
+
+html, body {
+  height: 100%;
+  width: 100%;
+  min-height: 100%;
+  background: black;
+  color: #fff; }
+
+body {
+  font-size: 16px;
+  line-height: 24.3px; }
+
+a {
+  color: #CCC;
+  text-decoration: none; }
+
+header {
+  height: 100px; }
+
+.product {
+  float: left;
+  position: relative;
+  width: 570px;
+  height: 432px;
+  background-color: #000;
+  margin-bottom: 20px;
+  margin-right: 20px;
+  overflow: hidden; }
+  .product h4 {
+    position: absolute;
+    text-align: center;
+    bottom: 0px;
+    font-size: 28px;
+    color: #FFF;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    opacity: 0.8;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=$amount * 100)";
+    filter: alpha(opacity=80);
+    background-color: #000; }
+    @media screen and (min-width: 570px) {
+      .product h4 {
+        position: absolute;
+        margin-left: 50%;
+        left: -285px;
+        width: 570px; } }
+  .product img {
+    position: absolute;
+    width: 570px; }
+
+.create-link {
+  position: absolute;
+  right: 10px;
+  top: 10px; }

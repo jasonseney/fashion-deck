@@ -1,14 +1,18 @@
-<br />
-<br />
-<a href="/">Create New</a>
-<br />
-<br />
-<br />
-<h1><%= @data['title'] %></h1>
+<link rel="stylesheet" type="text/css" href="/stylesheets/reset-min.css" />
+<link rel="stylesheet" type="text/css" href="/stylesheets/reset-fonts-min.css" />
 
+<link rel="stylesheet" type="text/css" href="/stylesheets/page.css" />
+
+<div class="deck">
+
+    <a class="create-link" href="/">+ Create New Deck</a>
+
+<header>
+    <h1 class='center'><%= @data['title'] %></h1>
+</header>
+
+<div id="photos">
 <% if @data['tumblr_blog'] != "" %>
-
-    <h2>Tumblr</h2>
 
     <% @tumblr_posts['response']['posts'][0..3].each do |post| %>
         <% if post["photos"] %>
@@ -17,29 +21,37 @@
     <% end %>
 
 <% end %>
+</div>
 
-<% if @data['etsy_store_id'] != "" %>
+<div id="products">
+    <% if @data['etsy_shop_id'] != "" %>
 
-   <code><%= ap @etsy_shop %></code>
+        <% @etsy_products['results'][0..6].each do |product| %>
+            <div class="product">
+                <img src="<%= product["MainImage"]["url_570xN"] %>" width="570" />
+                <h4><%= product["title"] %></h4>
+            </div>
+        <% end %>
 
-<% end %>
-
-<% if @data['vimeo_username'] != "" %>
-
-    <h2>Vimeo</h2>
-
-    <% @vimeo_videos[0..3].each do |video| %>
-        <div>
-        <iframe src="http://player.vimeo.com/video/<%= video["id"] %>" width="1280" height="720" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
-        </div>
     <% end %>
+<div>
 
-<% end %>
+<div id="videos">
+    <% if @data['vimeo_username'] != "" %>
 
-<% if @data['spotify_playlist'] %>
+        <h2>Vimeo</h2>
+        <% @vimeo_videos[0..3].each do |video| %>
+            <div>
+            <iframe src="http://player.vimeo.com/video/<%= video["id"] %>" width="1280" height="720" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+            </div>
+        <% end %>
+    <% end %>
+</div>
 
-    <iframe src="https://embed.spotify.com/?uri=<%= @data['spotify_playlist']%>&view=coverart" width="640" height="1000" frameborder="0" allowtransparency="true"></iframe>
+<div id="music">
+    <% if @data['spotify_playlist'] != "" %>
+        <iframe src="https://embed.spotify.com/?uri=<%= @data['spotify_playlist']%>&view=coverart" width="640" height="1000" frameborder="0" allowtransparency="true"></iframe>
+    <% end %>
+</div>
 
-<% end %>
-
-
+</div>

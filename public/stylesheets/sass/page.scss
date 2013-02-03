@@ -1,0 +1,54 @@
+@import "helpers";
+
+html, body { 
+    height: 100%;
+    width: 100%;
+    min-height: 100%;
+    background: black;
+    color: #fff;
+}
+body {
+    font-size: 16px;
+    line-height: scale_leading(18px); 
+}
+a {
+    color: #CCC;
+    text-decoration: none;
+}
+
+header {
+    height: 100px;
+}
+
+.product {
+    float: left;
+    position: relative;
+    width: 570px;
+    height: 432px;
+    background-color: #000;
+    margin-bottom: 20px;
+    margin-right: 20px;
+    overflow: hidden;
+    h4 {
+        position: absolute;
+        @include horizontal_center(570px);
+        text-align: center;
+        bottom: 0px;
+        font-size: 28px;
+        color: #FFF;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        @include translucent(0.8);
+        background-color:#000;
+    }
+    img {
+        position: absolute;
+        width: 570px;
+    }
+}
+
+.create-link {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
