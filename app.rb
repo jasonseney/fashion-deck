@@ -37,6 +37,14 @@ get '/page/:key' do
       tumblr_repsonse = RestClient.get tumblr_request, {:params => {}, :accept => :json}
       @tumblr_posts = JSON.parse tumblr_repsonse
   end
+
+  if @data["vimeo_username"]
+
+    vimeo_request = "http://vimeo.com/api/v2/" + @data["vimeo_username"] + "/videos.json"
+    vimeo_response = RestClient.get vimeo_request, {:params => {}, :accept => :json}
+    @vimeo_videos = JSON.parse vimeo_response
+    
+  end
   
   erb :page
 end
