@@ -21,13 +21,34 @@ html, body {
   height: 100%;
   width: 100%;
   min-height: 100%;
-  background: black;
-  color: #fff; }
+  background-color: black; }
 
 body {
   font-family: "Raleway", sans-serif;
   font-size: 16px;
-  line-height: 24.3px; }
+  line-height: 24.3px;
+  color: #fff; }
+
+.bg {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  min-height: 100%;
+  background: no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  -webkit-filter: grayscale(100%);
+  z-index: 0; }
+
+.deck {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  width: 100%;
+  min-height: 100%;
+  background: transparent; }
 
 a {
   color: #CCC;
@@ -42,7 +63,13 @@ header {
   width: 100%;
   background-color: #000;
   z-index: 100; }
+  header .logo {
+    float: left;
+    max-height: 150px;
+    max-width: 150px;
+    padding-left: 40px; }
   header h1 {
+    float: left;
     font-size: 48px;
     padding-top: 60px;
     padding-left: 40px; }
@@ -57,15 +84,17 @@ header {
 
 #photos {
   width: 100%;
-  overflow: hidden;
+  overflow-x: scroll;
+  overflow-y: hidden;
   height: 500px; }
   #photos .slider {
-    width: 200%;
-    float: left; }
+    width: 3600px;
+    float: left;
+    height: 500px; }
   #photos .photo {
     float: left; }
     #photos .photo img {
-      max-height: 500px; }
+      height: 500px; }
 
 .product {
   float: left;
@@ -117,3 +146,10 @@ header {
   width: 100%;
   max-width: 1200px;
   margin: 20px auto; }
+
+.video {
+  width: 100%;
+  margin-top: 20px;
+  text-align: center; }
+  .video iframe {
+    margin: 0px auto; }

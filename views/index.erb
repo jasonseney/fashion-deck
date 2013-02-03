@@ -33,7 +33,7 @@
   </div>
 
  <fieldset>
-        <legend>Your Social Media</legend>
+        <legend>Add Your Media</legend>
 
   <div class="row">
     <div class="four mobile-one columns">
@@ -64,6 +64,17 @@
       <input type="text" class="eight" name="spotify_playlist" placeholder="Spotify Playlist" />
     </div>
   </div>
+
+  <div class="row">
+    <div class="four mobile-one columns">
+      <label class="right inline"><i class="ss-icon ss-social">Instagram
+</i></label>
+    </div>
+    <div class="eight mobile-three columns">
+      <input type="text" class="eight" name="logo" placeholder="Url of Your Logo" />
+    </div>
+  </div>
+
 </fieldset>
 
  <fieldset>
@@ -71,7 +82,7 @@
 
   <div class="row">
     <div class="four mobile-one columns">
-        <label class="right inline"><i class="etsy"></i></label>
+        <label class="right inline"><i class="icon"><img src="/images/etsy.png" /></i></label>
     </div>
     <div class="eight mobile-three columns">
       <input type="text" name="etsy_shop_id" class="eight" placeholder="Etsy Store Id" />
@@ -94,3 +105,47 @@
 </div>
   
 </div>
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+    $.cloudinary.config({
+        "api_key":"<%= @cloudinary_api_key %>",
+        "cloud_name":"<%= @cloudinary_name %>"
+    });
+
+    var uploader = $('.cloudinary-fileupload');
+
+    $(uploader).bind('cloudinarydone', function(e, data) {  
+        
+        if(console) { console.log(data); }
+
+        $('#userimg').val(data.result.public_id + "." + data.result.format);    
+
+        var previewImage = $.cloudinary.image(data.result.public_id, {
+            format: data.result.format, 
+            version: data.result.version, 
+            crop: 'scale', 
+            width: 320,
+            height: 320 
+        });    
+
+        $('.preview').html(previewImage);
+           
+        return true;
+    });
+
+    $(uploader).bind('fileuploadstart', function(e,data) {
+        $('.preview').spin();
+        if(console) { console.log(data); }
+    });
+    $(uploader).bind('fileuploadfail', function(e,data) {
+        if(console) { console.log(data); }
+    });
+
+});
+
+</script> 
+
+

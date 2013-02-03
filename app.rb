@@ -4,6 +4,7 @@ before do
   @tumblr_secret = "BXyaIdbH2alYndsv1Tf1ON4cM7oZo3dEpFEbFCfH7iXCXTE7hG"
   @etsy_key = "4m8b59u9y7fzyyxqtpbmnw39"
   @instagram_key = ""
+  @cloudinary_name = "hgeymk7zf"
 end
 
 get '/' do
