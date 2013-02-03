@@ -18,6 +18,12 @@
 
 <% end %>
 
+<% if @data['etsy_store_id'] != "" %>
+
+   <code><%= ap @etsy_shop %></code>
+
+<% end %>
+
 <% if @data['vimeo_username'] != "" %>
 
     <h2>Vimeo</h2>
@@ -29,3 +35,11 @@
     <% end %>
 
 <% end %>
+
+<% if @data['spotify_playlist'] %>
+
+    <iframe src="https://embed.spotify.com/?uri=<%= @data['spotify_playlist']%>&view=coverart" width="640" height="1000" frameborder="0" allowtransparency="true"></iframe>
+
+<% end %>
+
+

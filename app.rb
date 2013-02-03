@@ -2,6 +2,8 @@ before do
   @db = CouchRest.database("https://app11538999.heroku:PYxf8SG0lcRpTOW0YcdBw2Ts@app11538999.heroku.cloudant.com/fashion-deck-dev")
   @tumblr_key = "2ezRZGpa2EZo691nC8YXgLFXfOUze8GytqKW6jHhj2exe7aeBB"
   @tumblr_secret = "BXyaIdbH2alYndsv1Tf1ON4cM7oZo3dEpFEbFCfH7iXCXTE7hG"
+  @etsy_key = "4m8b59u9y7fzyyxqtpbmnw39"
+  @instagram_key = ""
 end
 
 get '/' do
@@ -27,23 +29,51 @@ get '/page/:key' do
 
   @data = doc.to_hash
 
-  if @data["tumblr_blog"]
+  # *** TUMBLR ***
+  if @data["tumblr_blog"] != ""
 
     tumblr_request = "http://api.tumblr.com/v2/blog/" +
       @data["tumblr_blog"].to_s +
       "/posts" +
       "?api_key=" + @tumblr_key 
 
+    begin
       tumblr_repsonse = RestClient.get tumblr_request, {:params => {}, :accept => :json}
-      @tumblr_posts = JSON.parse tumblr_repsonse
+    rescue Error => e
+      puts e
+    end
+
+    @tumblr_posts = JSON.parse tumblr_repsonse
   end
 
-  if @data["vimeo_username"]
-
+  # *** VIMEO ***
+  if @data["vimeo_username"] != ""
     vimeo_request = "http://vimeo.com/api/v2/" + @data["vimeo_username"] + "/videos.json"
+
+    begin
     vimeo_response = RestClient.get vimeo_request, {:params => {}, :accept => :json}
+    rescue Error => e
+      puts e
+    end
     @vimeo_videos = JSON.parse vimeo_response
+  end
+
+  # *** ETSY ***
+  if @data["etsy_shop_id"] != ""
+    etsy_request = "http://sandbox.openapi.etsy.com/v2/shops/" + @data["etsy_shop_id"] + ".json"
+
+    #etsy_response = RestClient.get etsy_request, {:params => { :api_key => @etsy_key }, :accept => :json}
+    begin
+    etsy_response = RestClient.get "http://sandbox.openapi.etsy.com/v2/shops/Gifteryme.json?api_key=4m8b59u9y7fzyyxqtpbmnw39", {:timeout => 99999}
+    rescue Error => e
+      puts e
+    end
     
+    @etsy_shop = JSON.parse etsy_response
+      
+  end
+  if @data["spotify_playlist"] != ""
+
   end
   
   erb :page
